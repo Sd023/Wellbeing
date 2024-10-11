@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cardItem"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+
+    app:cardBackgroundColor="#8CAFB1"
+    app:cardCornerRadius="15dp"
+    android:elevation="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp">
+
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/mindfulness"
+             />
+
+        <TextView
+            android:id="@+id/cardItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/breathe"
+            android:layout_below="@id/icon1"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_30_second"
+            android:fontFamily="@font/nunito_italic"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_below="@id/cardItemText"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>
