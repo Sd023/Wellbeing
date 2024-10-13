@@ -10,6 +10,12 @@
 6. Run the React project with the command ```npm start```\
 **if chart displays everything is working fine**
 
+## Ports
+  Localports that are in use when app is running\
+    -**Docker: MongoDB-Container**: 27017\
+    -**Endpoint**: 3000\
+    -**React WebApp**: 3001
+    
 ## Tech Stack
 
 ### Frontend
