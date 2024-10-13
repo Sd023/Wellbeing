@@ -13,3 +13,9 @@
 .externalNativeBuild
 .cxx
 local.properties
+/backend/mongo-api/node_modules
+*log
+/backend/mongo-api/package-lock.json
+/backend/reactapp/node_modules
+/backend/reactapp/package-lock.json
+/backend/reactapp/*.log

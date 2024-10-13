@@ -14,11 +14,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.sdapps.wellbeing.LoginActivity.Companion.CURRENT_DATE
 import com.sdapps.wellbeing.R
 import com.sdapps.wellbeing.mindfullness.data.MenuBO
 import com.sdapps.wellbeing.mindfullness.ui.MindfulnessActivity
 import com.sdapps.wellbeing.mindfullness.ui.MindfulnessActivity.Companion.BREATHE
 import com.sdapps.wellbeing.mindfullness.ui.MindfulnessActivity.Companion.CHALLENGE
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class WellnessActivity : AppCompatActivity() {
 
@@ -38,8 +41,8 @@ class WellnessActivity : AppCompatActivity() {
     private var pastAnsweredQuestions: Int = 0
 
     private var currentPhase = INHALE
-
-
+    private lateinit var todaysDate : LocalDate
+    private var dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd:MM:yyyy")
 
     companion object {
         const val activityTracker = "activity_tracker"
@@ -94,10 +97,15 @@ class WellnessActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.save).setOnClickListener {
+            todaysDate = LocalDate.now()
+            val formattedDate = dateFormatter.format(todaysDate)
+
             if(checkIfQuestionsAnsweredAlready()){
                 spEditor.putInt(moduleCode, pastAnsweredQuestions + qtnsAdapter.getTotalCount())
+                spEditor.putString(CURRENT_DATE,formattedDate.toString())
             }else {
                 Log.d("DHANUSH", "new Achievement count : ${qtnsAdapter.getTotalCount()}")
+                spEditor.putString(CURRENT_DATE,formattedDate.toString())
                 spEditor.putInt(moduleCode,qtnsAdapter.getTotalCount())
             }
             spEditor.apply()

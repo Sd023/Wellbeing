@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sdapps.wellbeing.databinding.ActivityMainBinding
 import com.sdapps.wellbeing.mindfullness.ui.MindfulnessActivity
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class LoginActivity : AppCompatActivity() {
 
@@ -17,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
 
         const val LOGIN_ID = "test@gmail.com"
         const val LOGIN_PASSWORD = "test"
+        const val CURRENT_DATE = "date"
 
         const val loginSharePref = "login_id"
     }
@@ -34,7 +37,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         loginSharedPreferences = applicationContext.getSharedPreferences(loginSharePref, Context.MODE_PRIVATE)
         spEditor = loginSharedPreferences.edit()
-
 
         spEditor.putString(LOGIN_ID_LABEL,LOGIN_ID)
         spEditor.putString(LOGIN_PD_LABEL, LOGIN_PASSWORD)

@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sdapps.wellbeing.R
 import com.sdapps.wellbeing.mindfullness.data.MenuBO
 import com.sdapps.wellbeing.mindfullness.manager.CustomView
+import com.sdapps.wellbeing.mindfullness.ui.MindfulnessActivity.Companion.SYNC
 
-class MindfulAdapter(private var listItems: ArrayList<MenuBO>, var view: CustomView):
+class MindfulAdapter(private var listItems: MutableList<MenuBO>, var view: CustomView):
     RecyclerView.Adapter<MindfulAdapter.ViewHolder>() {
 
         private lateinit var context: Context
@@ -37,12 +38,13 @@ class MindfulAdapter(private var listItems: ArrayList<MenuBO>, var view: CustomV
 
         textValue = if(listItems[position].isTime){
             "${listItems[position].attr} seconds"
-        } else{
+        } else if (!listItems[position].mainMenu.equals(SYNC)){
             "${listItems[position].attr} tasks"
+        } else{
+            "Sync data to server"
         }
 
         holder.timeText.text = textValue
-
 
         holder.cardItem.setOnClickListener {
             view.handleCardClick(listItems[position].mainMenu, listItems[position])

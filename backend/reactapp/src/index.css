@@ -1,0 +1,12 @@
+.chart-container {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+  width: 100%; 
+}
+
+.chart {
+  width: 15cm;  
+  height: 15cm;
+  margin: 10px;
+}

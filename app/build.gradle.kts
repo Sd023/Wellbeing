@@ -57,4 +57,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.lottie)
+
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+
 }
