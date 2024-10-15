@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -22,16 +21,11 @@ import com.sdapps.wellbeing.databinding.ActivityMindfulnessBinding
 import com.sdapps.wellbeing.mindfullness.data.MenuBO
 import com.sdapps.wellbeing.mindfullness.manager.CustomView
 import com.sdapps.wellbeing.wellness.WellnessActivity.Companion.activityTracker
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import okhttp3.Call
 import okhttp3.Callback
-import okhttp3.Dispatcher
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import org.json.JSONArray
@@ -137,8 +131,8 @@ class MindfulnessActivity : AppCompatActivity(), CustomView {
     private fun upload(jsonArray: JSONArray){
         if (isNetworkConnected()){
             client = OkHttpClient()
-            val JSON = "application/json; charset=utf-8".toMediaTypeOrNull()
-            val requestBody = jsonArray.toString().toRequestBody(JSON)
+            val jsonReq = "application/json; charset=utf-8".toMediaTypeOrNull()
+            val requestBody = jsonArray.toString().toRequestBody(jsonReq)
 
             val request = Request.Builder()
                 .url("http://10.0.2.2:3000/upload")

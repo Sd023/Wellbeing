@@ -30,7 +30,7 @@ class QuestionsAdapter(var listItems: ArrayList<TaskBO>) : RecyclerView.Adapter<
         holder.taskId.text = "${listItems[position].taskId}"
         holder.questions.text = listItems[position].question
 
-        holder.radioYes.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.radioYes.setOnCheckedChangeListener { _ , isChecked ->
             if(isChecked){
                 holder.radioNo.isEnabled = false
                 answeredQuestions++
@@ -38,7 +38,7 @@ class QuestionsAdapter(var listItems: ArrayList<TaskBO>) : RecyclerView.Adapter<
             }
         }
 
-        holder.radioNo.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.radioNo.setOnCheckedChangeListener { _ , isChecked ->
             if(isChecked) {
                 holder.radioYes.isEnabled = false
             }

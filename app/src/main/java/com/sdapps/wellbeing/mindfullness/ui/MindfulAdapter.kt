@@ -30,15 +30,14 @@ class MindfulAdapter(private var listItems: MutableList<MenuBO>, var view: Custo
     }
 
     private fun bind(holder: ViewHolder,position: Int){
-        var textValue = ""
         val image = BitmapDrawable(context.resources,listItems[position].image)
         holder.icon1.setImageDrawable(image)
 
         holder.cardItemText.text = listItems[position].mainMenu
 
-        textValue = if(listItems[position].isTime){
+        val textValue: String = if(listItems[position].isTime){
             "${listItems[position].attr} seconds"
-        } else if (!listItems[position].mainMenu.equals(SYNC)){
+        } else if (listItems[position].mainMenu != SYNC){
             "${listItems[position].attr} tasks"
         } else{
             "Sync data to server"

@@ -9,8 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sdapps.wellbeing.databinding.ActivityMainBinding
 import com.sdapps.wellbeing.mindfullness.ui.MindfulnessActivity
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
 class LoginActivity : AppCompatActivity() {
