@@ -55,7 +55,7 @@ const App = () => {
       <div className="chart">
         <h2>Daily Actual Values</h2>
         {dailyActualValuesData.length > 0 && (
-          <Bar data={prepareChartData(dailyActualValuesData, 'Daily Actual', '')} />
+          <Bar data={prepareChartData(dailyActualValuesData, 'Daily Actual', 'Daily Target')} />
         )}
       </div>
     </div>

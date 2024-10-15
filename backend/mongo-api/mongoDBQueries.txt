@@ -1,0 +1,4 @@
+
+
+SQL Statement : SELECT col_name from table_name WHERE col_name > 4
+MONGO DB : db.users.find({ age: { $gt: 25 } });

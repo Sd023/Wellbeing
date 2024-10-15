@@ -67,27 +67,6 @@ app.get('/api/totalActualTarget', async (req, res) => {
 });
 
 
-// app.get('/api/countModulesPerRange', async (req, res) => {
-//   try {
-//     const data = await DataBO.aggregate([
-//       {
-//         $bucket: {
-//           groupBy: "$actual",
-//           boundaries: [0, 50, 100, 150, 200],
-//           default: "Other",
-//           output: {
-//             count: { $sum: 1 }
-//           }
-//         }
-//       }
-//     ]);
-//     res.status(200).json(data);
-//   } catch (error) {
-//     res.status(500).send('Error fetching module count per actual value range');
-//   }
-// });
-
-
 app.get('/api/dailyActualValues', async (req, res) => {
   try {
     const data = await DataBO.aggregate([
@@ -107,26 +86,6 @@ app.get('/api/dailyActualValues', async (req, res) => {
     res.status(500).send('Error fetching daily actual values');
   }
 });
-
-
-// app.get('/api/comparisonActualTarget', async (req, res) => {
-//   try {
-//     const data = await DataBO.aggregate([
-//       {
-//         $group: {
-//           _id: "$moduleCode",
-//           totalActual: { $sum: "$actual" },
-//           totalTarget: { $sum: "$target" }
-//         }
-//       }
-//     ]);
-//     res.status(200).json(data);
-//   } catch (error) {
-//     res.status(500).send('Error fetching comparison of actual vs target');
-//   }
-// });
-
-
 
 
 app.listen(port, () => {
