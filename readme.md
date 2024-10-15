@@ -3,10 +3,10 @@
 
 **To Start Project**
 1. Open Docker App, Start ```mongodb-container```
-2. Open the file in the location /Desktop/Wellbeing/backend/mongo-api/index.js file in VSCode
+2. Open the file in the location /Desktop/Dhanush/AndroidApp/Wellbeing/backend/mongo-api/index.js file in VSCode
 3. Start Node server with the following command, Open Terminal and enter ```node index.js```
 4. Run Android Studio and Run the Application
-5. Open React Web Application in the folder /Desktop/Project/Wellbeing/backend/reactapp/ in VSCode
+5. Open React Web Application in the folder /Desktop/Dhanush/AndroidApp/Wellbeing/backend/reactapp/ in VSCode
 6. Run the React project with the command, Open Terminal and enter ```npm start```\
 **if chart displays everything is working fine**
 
