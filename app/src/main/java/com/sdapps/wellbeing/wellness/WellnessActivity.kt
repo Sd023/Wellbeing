@@ -1,7 +1,5 @@
 package com.sdapps.wellbeing.wellness
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -41,7 +39,7 @@ class WellnessActivity : AppCompatActivity() {
     private var pastAnsweredQuestions: Int = 0
 
     private var currentPhase = INHALE
-    private lateinit var todaysDate : LocalDate
+    private lateinit var todaysDate: LocalDate
     private var dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd:MM:yyyy")
 
     companion object {
@@ -92,7 +90,8 @@ class WellnessActivity : AppCompatActivity() {
         val qtnsAdapter = QuestionsAdapter(questionsList)
 
         findViewById<RecyclerView>(R.id.questionRecyclerView).apply {
-            layoutManager =  LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
             adapter = qtnsAdapter
         }
 
@@ -100,26 +99,25 @@ class WellnessActivity : AppCompatActivity() {
             todaysDate = LocalDate.now()
             val formattedDate = dateFormatter.format(todaysDate)
 
-            if(checkIfQuestionsAnsweredAlready()){
+            if (checkIfQuestionsAnsweredAlready()) {
                 spEditor.putInt(moduleCode, pastAnsweredQuestions + qtnsAdapter.getTotalCount())
-                spEditor.putString(CURRENT_DATE,formattedDate.toString())
-            }else {
+                spEditor.putString(CURRENT_DATE, formattedDate.toString())
+            } else {
                 Log.d("DHANUSH", "new Achievement count : ${qtnsAdapter.getTotalCount()}")
-                spEditor.putString(CURRENT_DATE,formattedDate.toString())
-                spEditor.putInt(moduleCode,qtnsAdapter.getTotalCount())
+                spEditor.putString(CURRENT_DATE, formattedDate.toString())
+                spEditor.putInt(moduleCode, qtnsAdapter.getTotalCount())
             }
             spEditor.apply()
             finish()
         }
 
 
-
     }
 
-    private fun checkIfQuestionsAnsweredAlready(): Boolean{
+    private fun checkIfQuestionsAnsweredAlready(): Boolean {
         val sp = getSharedPreferences(activityTracker, Context.MODE_PRIVATE)
-        pastAnsweredQuestions = sp.getInt(moduleCode,0)
-        Log.d("DHANUSH", "Past Data -> ${sp.getInt(moduleCode,0)}")
+        pastAnsweredQuestions = sp.getInt(moduleCode, 0)
+        Log.d("DHANUSH", "Past Data -> ${sp.getInt(moduleCode, 0)}")
         return pastAnsweredQuestions > 0
 
     }
@@ -141,7 +139,7 @@ class WellnessActivity : AppCompatActivity() {
 
     private fun handleBundles() {
         if (intent != null) {
-            menuBO = intent?.getParcelableExtra("key")
+            menuBO = intent?.getParcelableExtra("key", MenuBO::class.java)
             moduleCode = intent?.getStringExtra(MindfulnessActivity.Companion.MODULE_CODE)
         }
     }
@@ -155,10 +153,11 @@ class WellnessActivity : AppCompatActivity() {
                     timerInSeconds = millisUntilFinished / 1000
                     timerText.text = currentPhase
 
-                    when(currentPhase) {
+                    when (currentPhase) {
                         INHALE -> {
                             currentPhase = EXHALE
                         }
+
                         EXHALE -> {
                             currentPhase = INHALE
                         }
